@@ -4,8 +4,8 @@
 <div align="center">
 
   <h1>
-    <span style="font-size: 1004em;">WorldArena:</span><br>
-    A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models
+    <b>WorldArena:</b><br>
+    <sub>A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models</sub>
   </h1>
 
   <p>
