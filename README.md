@@ -6,7 +6,7 @@
   <h1 align="center">
     <strong>WorldArena:
       
-      A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models</strong>
+    A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models</strong>
   </h1>
 
 
