@@ -9,18 +9,18 @@
   </h1>
 
   <p>
-    <a href="https://worldarena.github.io/assets_common/papers/WorldArena.pdf">
+    <!-- <a href="https://worldarena.github.io/assets_common/papers/WorldArena.pdf">
       <img src="https://img.shields.io/badge/Paper-%F0%9F%93%96-darkred" alt="Paper">
-    </a>
+    </a> -->
     <a href="https://worldarena.github.io/">
       <img src="https://img.shields.io/badge/Project-%F0%9F%94%97-blue" alt="Project">
     </a>
     <a href="https://huggingface.co/spaces/WorldArena/WorldArena">
       <img src="https://img.shields.io/badge/Leaderboard-%F0%9F%94%97-yellow" alt="Leaderboard">
     </a>
-    <a href="https://huggingface.co/datasets/worldbench/videogen">
+    <!-- <a href="https://huggingface.co/datasets/worldbench/videogen">
       <img src="https://img.shields.io/badge/Dataset-%F0%9F%94%97-green" alt="Dataset">
-    </a>
+    </a> -->
   </p>
 
 </div>
