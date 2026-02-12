@@ -27,8 +27,5 @@
 
 
 
-### :grey_question: Is your driving world model an all-around player? 
-
-- This work presents `WorldLens`, a unified benchmark encompassing evaluations on $^1$**Generation**, $^2$**Reconstruction**, $^3$**Action-Following**, $^4$**Downstream Task**, and $^5$**Human Preference**, across **a total of 24 dimensions** spanning visual realism, geometric consistency, functional reliability, and perceptual alignment.
-- We observe no single model dominates across all axes, highlighting the need for balanced progress toward physically and behaviorally realistic world modeling.
+### :grey_question: Is 
 - For additional visual examples, kindly refer to our : [Project Page](https://worldarena.github.io/).
