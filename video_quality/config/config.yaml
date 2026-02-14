@@ -1,0 +1,41 @@
+# === Configuration File Guide ===
+model_name: test
+data:
+  gt_path: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/data/gt_dataset
+  val_base: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/data/generated_dataset
+data_action_following:
+  gt_path: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/data_action_following/gt_dataset
+  val_base: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/data_action_following/generated_dataset
+save_path: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/output
+save_path_action_following: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/output_action_following
+ckpt:
+  scene_consistency: /manifold-obs/lzh/EWMBench/models/EWMBench-model/dinov2-EWMBench-v0.1.pth
+  action_following: /manifold-obs/lzh/EWMBench/models/ViT-B-32.pt
+  semantic_alignment:
+    caption: /manifold-obs/lzh/EWMBench/models/Qwen2.5-VL-7B-Instruct
+    CLIP: /manifold-obs/lzh/EWMBench/models/clip-vit-base-patch16
+  depth_accuracy: /manifold-obs/lzh/depth-anything
+  aesthetic_quality:
+    clip: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/clip_model/ViT-L-14.pt
+    aesthetic_head: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/aesthetic_model/emb_reader
+  background_consistency:
+    clip: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/clip_model/ViT-B-32.pt
+    raft: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth
+  dynamic_degree:
+    raft: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth
+  flow_score:
+    raft: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth
+  photometric_smoothness:
+    cfg: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/third_party/SEA-RAFT/config/eval/spring-M.json
+    model: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/third_party/checkpoints/Tartan-C-T-TSKH-spring540x960-M.pth
+  motion_smoothness:
+    model: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/third_party/checkpoints/VFIMamba.pkl
+  image_quality:
+    musiq: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/pyiqa_model/musiq_spaq_ckpt-358bb6af.pth
+  subject_consistency:
+    repo: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/dino_model/facebookresearch_dino_main
+    weight: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/dino_model/dino_vitbase16_pretrain.pth
+    model: dino_vitb16
+    raft: /ML-vePFS/protected/lizhuohang/WorldArena_1/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth
+  sam3_model_ckpt: /manifold-obs/lzh/EWMBench/models/sam
+  vlm_model: /manifold-obs/lzh/qwenvl3
