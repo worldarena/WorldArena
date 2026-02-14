@@ -76,9 +76,9 @@ def process_item(item, gen_video_dir, output_base):
     base_name_1 = os.path.basename(gen_video_dir)
     dir_name_1 = os.path.dirname(gen_video_dir)
 
-    # 如果只是名字，不是完整路径
+    
     new_name_1 = base_name_1.replace("_sort", "_1_sort")
-    # 如果是完整路径
+    
     gen_video_dir_1 = os.path.join(dir_name_1, new_name_1)
     target_gen_video_2 = Path(gen_video_dir_1) / f"{id1}_{id2}.mp4"
     if target_gen_video_2.exists():
@@ -93,9 +93,9 @@ def process_item(item, gen_video_dir, output_base):
     base_name_2 = os.path.basename(gen_video_dir)
     dir_name_2 = os.path.dirname(gen_video_dir)
 
-    # 如果只是名字，不是完整路径
+  
     new_name_2 = base_name_2.replace("_sort", "_2_sort")
-    # 如果是完整路径
+   
     gen_video_dir_2 = os.path.join(dir_name_2, new_name_2)
     target_gen_video_3 = Path(gen_video_dir_2) / f"{id1}_{id2}.mp4"
     if target_gen_video_3.exists():

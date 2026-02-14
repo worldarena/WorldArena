@@ -15,7 +15,7 @@ fi
 
 # Activate environment
 source $(conda info --base)/etc/profile.d/conda.sh
-conda activate your absolute path
+conda activate WorldArena
 export PATH="your absolute path:$PATH"
 
 DATA_DIR="./data_action_following"
