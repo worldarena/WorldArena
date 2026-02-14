@@ -64,38 +64,7 @@ wget -O ssv2-probe.pth.tar https://dl.fbaipublicfiles.com/jepa/vith16/ssv2-probe
 - Generated video directory must be named `modelname_sort`; put only videos inside, named `{taskname}_episode_{xx}.mp4`; no subfolders allowed.
 
 ### 6. External Weights / Paths
-Configure local weights and I/O paths in video_quality/config/config.yaml (do not change model_name: test):
-- `action_following`: ["your absolute path"/models/ViT-B-32.pt](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt)
-- `semantic_alignment`:
-
-    - `caption`: ["your absolute path"/models/Qwen2.5-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct)
-    - `CLIP`: ["your absolute path"/models/clip-vit-base-patch16](https://huggingface.co/openai/clip-vit-base-patch16)
-- `depth_accuracy`: ["your absolute path"/depth-anything](https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf)
-- `aesthetic_quality`:
-    - `clip`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/clip_model/ViT-L-14.pt](https://huggingface.co/jinaai/clip-models/blob/main/ViT-L-14.pt)
-    - `aesthetic_head`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/aesthetic_model/emb_reader/sa_0_4_vit_l_14_linear.pth]("https://github.com/LAION-AI/aesthetic-predictor/blob/main/sa_0_4_vit_l_14_linear.pth?raw=true")
-- `background_consistency`:
-    - `clip`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/clip_model/ViT-B-32.pt](https://huggingface.co/jinaai/clip-models/blob/main/ViT-B-32.pt)
-    - `raft`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth](https://huggingface.co/RaphaelLiu/EvalCrafter-Models/tree/main/RAFT/models)
-- `dynamic_degree`:
-    - `raft`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth](https://huggingface.co/RaphaelLiu/EvalCrafter-Models/tree/main/RAFT/models)
-- `flow_score`:
-    - `raft`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth](https://huggingface.co/RaphaelLiu/EvalCrafter-Models/tree/main/RAFT/models)
-- `photometric_smoothness`:
-    - `cfg`: "your absolute path"/WorldArena/video_quality/WorldArena/third_party/SEA-RAFT/config/eval/spring-M.json (already included locally)
-    - `model`: ["your absolute path"/WorldArena/video_quality/WorldArena/third_party/checkpoints/Tartan-C-T-TSKH-spring540x960-M.pth](https://huggingface.co/MemorySlices/Tartan-C-T-TSKH-spring540x960-M/blob/main/model.safetensors)
-- `motion_smoothness`:
-    - `model`: ["your absolute path"/WorldArena/video_quality/WorldArena/third_party/checkpoints/VFIMamba.pkl](https://huggingface.co/MCG-NJU/VFIMamba/blob/main/model.pkl)
-- `image_quality`:
-    - `musiq`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/pyiqa_model/musiq_spaq_ckpt-358bb6af.pth](https://huggingface.co/chaofengc/IQA-PyTorch-Weights/blob/main/musiq_spaq_ckpt-358bb6af.pth)
-- `subject_consistency`:
-    - `repo`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/dino_model/facebookresearch_dino_main](https://github.com/facebookresearch/dino)
-    - `weight`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/dino_model/dino_vitbase16_pretrain.pth](https://huggingface.co/Xiaomabufei/lumos/blob/main/dino_vitbase16_pretrain.pth)
-    - `model`: dino_vitb16
-    - `raft`: ["your absolute path"/WorldArena/video_quality/WorldArena/vbench_cache/raft_model/models/raft-things.pth](https://huggingface.co/RaphaelLiu/EvalCrafter-Models/tree/main/RAFT/models)
-- `sam3_model_ckpt`: ["your absolute path"/models/sam](https://huggingface.co/facebook/sam3/tree/main) (Note: download [bpe_simple_vocab_16e6.txt.gz](https://huggingface.co/OpenGVLab/ViCLIP-B-16-hf/blob/main/bpe_simple_vocab_16e6.txt.gz) into this sam folder.)
-- `vlm_model`: ["your absolute path"/models/qwenvl3](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct)
-
+Configure local weights and I/O paths in [config](video_quality/config/config.yaml) (do not change model_name: test):
 ### 7. Run Evaluation
 
 For the first two evaluations, directly use the generated video directory and summary_json; JEPA requires a GT video directory (only .mp4 files following naming rules, no nesting).
@@ -144,33 +113,7 @@ data_action_following
 For action following, episode_{x} must contain subfolders 1, 2, 3; other metrics only need subfolder 1.
 
 Videos in subfolders 2 and 3 can be created by modifying the original prompt to guide two different actions; you can call an LLM or write manually. Sample LLM prompt:
-```txt
-"""You are a robotics data augmentation expert. Your goal is to rewrite a robot instruction into two diverse variations to test policy generalization. 
 
-STRICT RULES for Variations:
-1. **Consistency Constraint (DO NOT CHANGE)**: 
-   - You MUST keep the **Target Object** from the original instruction (e.g., if it's "red block", keep it "red block") to match the provided initial image.
-   - You MUST keep the **Robot Part** (e.g., "arm"), but you can switch between "left" and "right". Do NOT change "arm" to "hand" or other parts.
-
-2. **Variation 1: Spatial & Entity Mirroring (Maximum Logical Difference)**:
-   - **Switch the Arm**: If the original used the "left arm", you MUST use the "right arm" (and vice versa).
-   - **Reverse the Direction**: If the original moved "left", move "right". If "forward", move "backward".
-   - **Flip the Destination**: Move the object to the opposite side of the workspace compared to the original goal.
-
-3. **Variation 2: Goal Redefinition & Trajectory Re-planning**:
-   - **Change the Final Goal**: Instead of the original destination, invent a completely new one (e.g., "drop it into the container", "stack it on another object", "hide it behind the bin").
-   - **Exaggerate Path & Amplitude**: Use high-contrast movement styles (e.g., "via an exaggeratedly high overhead arc", "dragging it slowly across the surface", "approaching from the extreme far side").
-
-4. **Diversity**: The resulting actions should require completely different joint configurations (Action sequences) from the original.
-
-Example Input: "Use the left arm to pick up the banana and put it on the green plate."
-Example Output: [
-    "Use the right arm to grasp the banana and move it to the far right edge of the table, away from the plates.", 
-    "Use the left arm to lift the banana in a wide circular sweep and carefully tuck it inside the brown box instead of the plate."
-]
-
-Output ONLY a raw JSON list containing exactly 2 strings."""
-```
 Use these two instructions to generate two new action videos. If the action-guided video lacks a modifiable prompt, consider using other actions from the same task to achieve different actions.
 
 Finally, place the two new-action videos into corresponding directories (all must be MP4, no nested files, names match generated video names). Name the three directories `modelname_sort` `modelname_1_sort` `modelname_2_sort`:
