@@ -64,7 +64,7 @@ wget -O ssv2-probe.pth.tar https://dl.fbaipublicfiles.com/jepa/vith16/ssv2-probe
 - Generated video directory must be named `modelname_sort`; put only videos inside, named `{taskname}_episode_{xx}.mp4`; no subfolders allowed.
 
 ### 6. External Weights / Paths
-Configure local weights and I/O paths in [config](video_quality/config/config.yaml) (do not change model_name: test):
+Configure local weights and I/O paths in [config](config/config.yaml) (do not change model_name: test):
 ### 7. Run Evaluation
 
 For the first two evaluations, directly use the generated video directory and summary_json; JEPA requires a GT video directory (only .mp4 files following naming rules, no nesting).
