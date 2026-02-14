@@ -110,13 +110,9 @@ data_action_following
   │
 
 ```
-For action following, episode_{x} must contain subfolders 1, 2, 3; other metrics only need subfolder 1.
-
-Videos in subfolders 2 and 3 can be created by modifying the original prompt to guide two different actions; you can call an LLM or write manually. Sample LLM prompt:
-
 Use these two instructions to generate two new action videos. If the action-guided video lacks a modifiable prompt, consider using other actions from the same task to achieve different actions.
 
-Finally, place the two new-action videos into corresponding directories (all must be MP4, no nested files, names match generated video names). Name the three directories `modelname_sort` `modelname_1_sort` `modelname_2_sort`:
+Name the three directories `modelname_sort` `modelname_1_sort` `modelname_2_sort`:
 
 - action following (requires `WorldArena` env):
 ```bash
