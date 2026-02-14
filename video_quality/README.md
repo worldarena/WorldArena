@@ -110,7 +110,9 @@ data_action_following
   │
 
 ```
-Use these two instructions to generate two new action videos. If the action-guided video lacks a modifiable prompt, consider using other actions from the same task to achieve different actions.
+Videos in subfolders 2 and 3 can be created by modifying the original prompt to guide two different actions; you can call an LLM or write manually. 
+
+Use these two prompts to generate two new action videos. If the action-guided video lacks a modifiable prompt, consider using other actions from the same task to achieve different actions.
 
 Name the three directories `modelname_sort` `modelname_1_sort` `modelname_2_sort`:
 

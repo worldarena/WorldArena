@@ -39,7 +39,8 @@ WorldArena is a unified benchmark designed to systematically evaluate embodied w
 <img src="assets/video_eval.png" width="85%">
 
 </div>
-Please refer to [video quality](https://github.com/worldarena/WorldArena/blob/main/video_quality/README.md) for implementation.
+
+Please refer to [video_quality](https://github.com/worldarena/WorldArena/blob/main/video_quality/README.md) for implementation.
 
 ## 🤖 Embodied Task Evaluation
 
